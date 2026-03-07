@@ -1,0 +1,22 @@
+<div style="padding: 20px;">
+  <h1>Mis Tareas</h1>
+
+  <input [(ngModel)]="newTaskTitle" placeholder="Nueva tarea...">
+  <button (click)="createTask()">Agregar</button>
+
+  <hr>
+
+  <div *ngIf="taskToEdit">
+    <input [(ngModel)]="taskToEdit.title">
+    <button (click)='saveUpdate()'>Guardar</button>
+    <button (click)='taskToEdit = null'>Cancelar</button>
+  </div>
+
+  <ul>
+    <li *ngFor="let task of taskList">
+      {{ task.title }}
+      <button (click)="prepareEdit(task)">Editar</button>
+      <button (click)="deleteTask(task.id)">Eliminar</button>
+    </li>
+  </ul>
+</div>
